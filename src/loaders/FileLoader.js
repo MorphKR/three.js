@@ -85,7 +85,9 @@ class FileLoader extends Loader {
 		const responseType = this.responseType;
 
 		// start the fetch
-		fetch( req )
+		fetch( req, {
+			signal: this.abortSignal,
+		} )
 			.then( response => {
 
 				if ( response.status === 200 || response.status === 0 ) {
@@ -152,7 +154,10 @@ class FileLoader extends Loader {
 
 									controller.error( e );
 
-								} );
+								} )
+								.catch( ( e ) => {
+									onError(e);
+								});
 
 							}
 

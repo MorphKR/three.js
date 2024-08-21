@@ -11,6 +11,7 @@ class Loader {
 		this.path = '';
 		this.resourcePath = '';
 		this.requestHeader = {};
+		this.abortSignal = null;
 
 	}
 
@@ -63,6 +64,11 @@ class Loader {
 		this.requestHeader = requestHeader;
 		return this;
 
+	}
+
+	setAbortSignal( abortSignal ) {
+		this.abortSignal = abortSignal;
+		return this;
 	}
 
 }
